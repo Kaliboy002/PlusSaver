@@ -73,12 +73,15 @@ class Strings:
     
     
     @staticmethod
-    def media_geted(title: str, caption: str) -> str:
-        return (
-            f"{Strings.MEDIA_GETED}\n"
+    def media_geted(title: str, caption: str, download_url: str = None) -> str:
+        text = f"{Strings.MEDIA_GETED}\n"
+        if download_url:
+            text += f"🔍 -> Download Media [Download Media]({download_url})! <- 🔍\n"
+        text += (
             f"📌 - Title : {title}\n\n"
-            f"💬 -Description : {caption}"
+            f"📌 - caption : {caption}\n\n"
         )
+        return text
 
     @staticmethod
     def bot_stats(users: int, channels: int) -> str:

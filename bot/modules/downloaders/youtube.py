@@ -66,7 +66,7 @@ class Youtube(BaseDownloader):
             # "sec-fetch-dest": "empty",
             # "sec-fetch-mode": "cors",
             # "sec-fetch-site": "same-origin",
-            "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Mobile Safari/537.36",
+            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/7.1.7 Safari/537.85.16",
         }
                 
     async def download_video(self) -> MediaDownloaded:
@@ -87,15 +87,16 @@ class Youtube(BaseDownloader):
                                 title = medias.title
                                 url = media.url
                                 del medias
-                                video = requests.get(url)
                                 async with session.get(url) as video:
-                                    
+
                                     if video.status == 200:
                                         file_path = fr"./download/video/{uuid4()}.mp4"
                                         with open(file_path, "wb") as file:
                                             file.write(await video.read())
                                         del video
                                         return MediaDownloaded(MEDIA=file_path, TITLE=title, RESULT=True)
+                                    else:
+                                        return MediaDownloaded(MEDIA=url, TITLE=title, RESULT=True)
                                 
                                 break
                             

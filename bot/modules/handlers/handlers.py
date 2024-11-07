@@ -3,7 +3,7 @@ from telethon.events import CallbackQuery
 from telethon.types import PeerChannel, PeerUser, Channel as ChannelInstance
 from telethon.errors.rpcerrorlist import FloodWaitError, MediaCaptionTooLongError
 from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantRequest
-from telethon.errors.rpcerrorlist import UserNotParticipantError, ChatAdminRequiredError, ChannelPrivateError, UserIsBlockedError
+from telethon.errors.rpcerrorlist import UserNotParticipantError, ChatAdminRequiredError, ChannelPrivateError, UserIsBlockedError, WebpageCurlFailedError, WebpageMediaEmptyError, MediaEmptyError
 from abc import ABC, abstractmethod
 from re import match
 from typing import Iterable, Any
@@ -42,6 +42,11 @@ async def send_media(event, medias: MediaDownloaded | MediasDownloaded) -> None:
                 except MediaCaptionTooLongError:
                     media_sended = await client.send_file(event.chat_id, file=media.MEDIA, reply_to=event.id)
                     await client.send_message(event.chat_id, message=Strings.media_geted(media.TITLE, media.CAPTION), reply_to=media_sended.id)
+                
+                except (WebpageCurlFailedError, WebpageMediaEmptyError, MediaEmptyError):
+                    await client.send_message(event.chat_id, message=Strings.media_geted(media.TITLE, media.CAPTION, download_url=media.MEDIA), reply_to=event.id, link_preview=False)
+                    await message.delete()
+                    return
                 
                 await message.delete()
                 
