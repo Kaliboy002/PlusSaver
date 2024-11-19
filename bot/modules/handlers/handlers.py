@@ -322,7 +322,7 @@ class CallBackQueryHandlers(HandlerBase):
                     await event.edit(Strings.ENTER_TEXT)
 
                 case InlineButtonsData.CHANGE_TRUST_CHANNEL:
-                    step = Permission(PART=Step.CHANGE_TRUST_CHANNEL)
+                    step = Permission(PART=Step.CHANGE_SUPPORT_CHANNEL)
                     step_limit[int(event.sender_id)] = step
                     await event.edit(Strings.ENTER_URL)
 
