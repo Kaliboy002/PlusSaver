@@ -3,15 +3,15 @@
 
 class BotConfig:
     SESSION_NAME = "PlusSaverSession"
-    API_ID = 123
-    API_HASH = ""
-    BOT_TOKEN = ""
-    BOT_USERNAME = "PlusSaverBot"  # Without @, example PlusSaverBot
-    DEFULT_ADMINS_USER_ID = {2056493966, }
-    CREATOR_USER_ID = 2056493966
-    SUPPORT_USERNAME = "Jarrare" # without @, example Jarrae
-    CREATOR_USERNAME = "Jarrare" # without @, example Jarrae
-    DEFULT_SUPPORT_CHANNEL_URL = "t.me/MohammadMahdiArbabpouri" # url form, not username
+    API_ID = 15787995
+    API_HASH = "e51a3154d2e0c45e5ed70251d68382de"
+    BOT_TOKEN = "7964758764:AAGuYr8voir-lrOBUim_mj1w2KfY1-7rsgI"
+    BOT_USERNAME = "Hajakakabot"  # Without @, example PlusSaverBot
+    DEFULT_ADMINS_USER_ID = {7046488481, }
+    CREATOR_USER_ID = 7046488481
+    SUPPORT_USERNAME = "Kaliboy002" # without @, example Jarrae
+    CREATOR_USERNAME = "Kaliboy002" # without @, example Jarrae
+    DEFULT_SUPPORT_CHANNEL_URL = "t.me/SHMMHS1" # url form, not username
     TEXT_LONG = 3000
     MEDIAS_CHANNEL_ID = 2232637889
     DEFULT_RULES_TEXT = (
